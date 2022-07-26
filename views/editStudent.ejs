@@ -1,0 +1,36 @@
+<main>
+    <div class="container mt-3">
+       <h3 class="text-center">Update</h3>
+       <% sinhvien.forEach(entry => { %> 
+       <form action="/editstudent/<%=entry.id%>" method="post">
+            <label for="name">Id</label>
+            <input type="hidden" name="id" value="<%=entry.id%>">
+            <input type="text" name="sv_id" value="<%=entry.sv_id%>" class="form-control">
+            <label for="tensinhvien">Tên sinh viên</label>
+            <input type="text" name="sv_name" value="<%=entry.sv_name%>" class="form-control">
+            <label for="ngaysinh">Ngày sinh</label>
+            <input type="date" name="sv_ngaysinh" value="<%=entry.sv_ngaysinh%>" class="form-control">
+            <label for="nganh">Ngành</label>
+            <input type="text" name="sv_nganh" value="<%=entry.sv_nganh%>" class="form-control">
+            <label for="hedaotao">Hệ đào tạo</label>
+            <input type="text" name="sv_hedaotao" value="<%=entry.sv_hedaotao%>" class="form-control">
+            <label for="ketqua">Kết quả</label>
+            <input type="text" name="sv_ketqua" value="<%=entry.sv_ketqua%>" class="form-control">
+            <label for="hinhthuc">Hình thức</label>
+            <input type="text" name="sv_hinhthuc" value="<%=entry.sv_hinhthuc%>" class="form-control">
+            <label for="tinhtrang">Tình trạng</label>
+            <input type="text" name="sv_tinhtrang" value="<%=entry.sv_tinhtrang%>" class="form-control">
+            <label for="email">Email</label>
+            <input type="text" name="sv_email" value="<%=entry.sv_email%>" class="form-control">
+            <label for="hinhanh">Hình ảnh</label>
+            <input type="text" name="img_name" value="<%=entry.img_name%>" class="form-control">
+            <label for="time_img">time img</label>
+            <input type="date" name="img_time" value="<%=entry.img_time%>" class="form-control">
+            <% }) %>
+           <input type="submit" value="Update" class="btn btn-primary mt-2"> <br>
+           <a href="/">Back?</a>
+       </form>
+    </div>
+  </main>
+  
+  

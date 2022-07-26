@@ -1,0 +1,49 @@
+<main>
+  <div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="import-excel">
+        <input type="submit" value="Add">
+    </form>
+  </div>
+  <div class="jumbotron">
+    <table class="table table-inverse">
+        <thead>
+          <h5 class="centre">Danh sách thư viện</h5>
+          <tr>
+            <th>sv Id</th>
+            <th>Tên sinh viên</th>
+            <th>ngày sinh</th>
+            <th>Ngành</th>
+            <th>Hệ đào tạo</th>
+            <th>Kết quả</th>
+            <th>Hình thức</th>
+            <th>Tình trạng</th>
+            <th>Email</th>
+            <th>Image name</th>
+            <th>image time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <% sinhvien.forEach(entry => { %>
+                <td><%= entry.sv_id %></td>
+                <td><%= entry.sv_name %></td>
+                <td><%= entry.sv_ngaysinh %></td>
+                <td><%= entry.sv_nganh %></td>
+                <td><%= entry.sv_hedaotao %></td>
+                <td><%= entry.sv_ketqua %></td>
+                <td><%= entry.sv_hinhthuc %></td>
+                <td><%= entry.sv_tinhtrang %></td>
+                <td><%= entry.sv_email %></td>
+                <td><%= entry.img_name %></td>
+                <td><%= entry.img_time %></td>
+                <td>
+                  <a href="/editstudent/<%=entry.id%>" class="btn btn-primary">Edit</a>
+                  <a href="/deletestudent/<%=entry.id%>" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+          <% }) %>
+        </tbody>
+    </table>
+  </div>
+</main>

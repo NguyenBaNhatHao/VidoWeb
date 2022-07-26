@@ -1,8 +1,20 @@
 <main>
   <div>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="import-excel">
-        <input type="submit" value="Add">
+    <form action="/excel" method="post" enctype="multipart/form-data">
+        <Label>Add new file excel</Label>
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="inputGroupFile02" name="excel">
+          <input class="input-group-text" for="inputGroupFile02" type="submit" value="Upload">
+        </div>
+    </form>
+  </div>
+  <div>
+    <form action="/excelUpdate" method="post" enctype="multipart/form-data">
+        <Label>Update file excel</Label>
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="inputGroupFile02" name="excelUpdate">
+          <input class="input-group-text" for="inputGroupFile02" type="submit" value="Upload">
+        </div>
     </form>
   </div>
   <div class="jumbotron">

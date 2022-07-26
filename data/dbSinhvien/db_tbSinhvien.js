@@ -30,7 +30,7 @@ async function addStudent(Sinhvien){
     try {
         let pool = await sql.connect(config);
         let student = await pool.request()
-        .input('sv_id',sql.Int, Sinhvien.sv_id)
+        .input('sv_id',sql.NVarChar, Sinhvien.sv_id)
         .input('sv_name',sql.NVarChar, Sinhvien.sv_name)
         .input('sv_ngaysinh',sql.NVarChar, Sinhvien.sv_ngaysinh)
         .input('sv_nganh',sql.NVarChar, Sinhvien.sv_nganh)
@@ -53,7 +53,7 @@ async function updateStudent(Sinhvien){
     try {
         let pool = await sql.connect(config);
         let student = await pool.request()
-        .input('sv_id',sql.Int, Sinhvien.sv_id)
+        .input('sv_id',sql.NVarChar, Sinhvien.sv_id)
         .input('sv_name',sql.NVarChar, Sinhvien.sv_name)
         .input('sv_ngaysinh',sql.NVarChar, Sinhvien.sv_ngaysinh)
         .input('sv_nganh',sql.NVarChar, Sinhvien.sv_nganh)

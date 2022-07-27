@@ -48,6 +48,28 @@ async function addStudent(Sinhvien){
     } 
 }
 
+async function addStudentExcel(Sinhvien){
+    try {
+        let pool = await sql.connect(config);
+        let student = await pool.request()
+        .input('sv_id',sql.NVarChar, Sinhvien.sv_id)
+        .input('sv_name',sql.NVarChar, Sinhvien.sv_name)
+        .input('sv_ngaysinh',sql.NVarChar, Sinhvien.YYYY+'-'+Sinhvien.MM+'-'+Sinhvien.DD)
+        .input('sv_nganh',sql.NVarChar, Sinhvien.sv_nganh)
+        .input('sv_hedaotao',sql.NVarChar, Sinhvien.sv_hedaotao)
+        .input('sv_ketqua',sql.NVarChar, Sinhvien.sv_ketqua)
+        .input('sv_hinhthuc',sql.NVarChar, Sinhvien.sv_hinhthuc)
+        .input('sv_tinhtrang',sql.NVarChar, Sinhvien.sv_tinhtrang)
+        .input('sv_email',sql.VarChar, Sinhvien.sv_email)
+        .input('img_name',sql.NVarChar, Sinhvien.img_name)
+        .input('img_time',sql.NVarChar, Sinhvien.img_time)
+        .execute('InsertStudent');
+        return student.recordsets
+    } catch (error) {
+        console.log(error)
+    } 
+}
+
 async function updateStudent(Sinhvien){
     
     try {
@@ -89,5 +111,6 @@ module.exports = {
     getStudentsId : getStudentsId,
     addStudent : addStudent,
     updateStudent : updateStudent,
-    DeleteStudent : DeleteStudent
+    DeleteStudent : DeleteStudent,
+    addStudentExcel : addStudentExcel
 }

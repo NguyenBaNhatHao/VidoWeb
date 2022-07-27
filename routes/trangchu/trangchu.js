@@ -32,7 +32,7 @@ router.post('/excel', function(req, res, next) {
         const ws = wb.Sheets[wb.SheetNames[0]];
         var xlData = XLSX.utils.sheet_to_json(ws);
         xlData.forEach(entry => {
-          sql.addStudent(entry).then(resutl => {
+          sql.addStudentExcel(entry).then(resutl => {
             
           });
         });
@@ -57,8 +57,8 @@ router.post('/excelUpdate', function(req, res, next) {
         const ws = wb.Sheets[wb.SheetNames[0]];
         var xlData = XLSX.utils.sheet_to_json(ws);
         xlData.forEach(entry => {
-          sql.updateStudent(entry).then(resutl => {
-            
+          sql.updateStudentExcel(entry).then(resutl => {
+            console.log(resutl);
           });
         });
         res.redirect('/');

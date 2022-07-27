@@ -48,6 +48,20 @@ async function addStudent(Sinhvien){
     } 
 }
 
+async function SearchStudent(Sinhvien){
+    
+    try {
+        let pool = await sql.connect(config);
+        let student = await pool.request()
+        .input('sv_name',sql.NVarChar, Sinhvien)
+        .input('sv_id',sql.NVarChar, Sinhvien)
+        .execute('SearchStudent');
+        return student.recordsets
+    } catch (error) {
+        console.log(error)
+    } 
+}
+
 async function addStudentExcel(Sinhvien){
     try {
         let pool = await sql.connect(config);
@@ -112,5 +126,6 @@ module.exports = {
     addStudent : addStudent,
     updateStudent : updateStudent,
     DeleteStudent : DeleteStudent,
-    addStudentExcel : addStudentExcel
+    addStudentExcel : addStudentExcel,
+    SearchStudent : SearchStudent
 }

@@ -68,7 +68,7 @@ async function addStudentExcel(Sinhvien){
         let student = await pool.request()
         .input('sv_id',sql.NVarChar, Sinhvien.sv_id)
         .input('sv_name',sql.NVarChar, Sinhvien.sv_name)
-        .input('sv_ngaysinh',sql.NVarChar, Sinhvien.YYYY+'-'+Sinhvien.MM+'-'+Sinhvien.DD)
+        .input('sv_ngaysinh',sql.NVarChar, Sinhvien.sv_ngaysinh)
         .input('sv_nganh',sql.NVarChar, Sinhvien.sv_nganh)
         .input('sv_hedaotao',sql.NVarChar, Sinhvien.sv_hedaotao)
         .input('sv_ketqua',sql.NVarChar, Sinhvien.sv_ketqua)

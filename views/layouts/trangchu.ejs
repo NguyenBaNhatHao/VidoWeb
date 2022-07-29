@@ -11,7 +11,7 @@
   <div class="jumbotron">
     <table class="table table-inverse">
         <thead>
-          <h5 class="centre">Danh sách thư viện</h5>
+          <h5 class="centre">Danh sách sinh viên</h5>
           <tr>
             <th>sv Id</th>
             <th>Tên sinh viên</th>
@@ -22,8 +22,6 @@
             <th>Hình thức</th>
             <th>Tình trạng</th>
             <th>Email</th>
-            <th>Image name</th>
-            <th>image time</th>
           </tr>
         </thead>
         <tbody>
@@ -38,8 +36,6 @@
                 <td><%= entry.sv_hinhthuc %></td>
                 <td><%= entry.sv_tinhtrang %></td>
                 <td><%= entry.sv_email %></td>
-                <td><%= entry.img_name %></td>
-                <td><%= entry.img_time %></td>
                 <td>
                   <a href="/editstudent/<%=entry.id%>" class="btn btn-primary">Edit</a>
                   <a href="/deletestudent/<%=entry.id%>" class="btn btn-danger">Delete</a>

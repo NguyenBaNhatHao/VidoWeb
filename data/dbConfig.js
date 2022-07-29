@@ -8,5 +8,5 @@ var config = {
     database: process.env.DATABASE,
     trustServerCertificate: true
 };
-console.log(config.port);
+console.log('port: '+config.port);
 module.exports = config

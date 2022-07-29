@@ -22,10 +22,18 @@ router.get('/deletestudent/:id', function(req, res, next) {
     res.redirect('/');
   })
 });
+
 router.post('/', function(req, res, next) {
   let searchTerm = req.body.search;
+  const limit = 5; 
+  const page = 1;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit; 
   sql.SearchStudent(searchTerm).then(resutl => {
-    res.render('layouts/trangchu', { sinhvien: resutl[0] });
+    const PagingData = resutl[0];
+    const data = PagingData.slice(startIndex, endIndex);
+    const count = PagingData.length;
+    res.render('layouts/trangchu', { sinhvien: data, current: page, pages: Math.ceil(count/limit) });
   })
 });
 

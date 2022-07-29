@@ -1,4 +1,5 @@
 require('dotenv').config();
+ 
 var config = {
     user: process.env.USERDB,
     password: process.env.PASSWORD,
@@ -7,5 +8,5 @@ var config = {
     database: process.env.DATABASE,
     trustServerCertificate: true
 };
-
+console.log(config.port);
 module.exports = config

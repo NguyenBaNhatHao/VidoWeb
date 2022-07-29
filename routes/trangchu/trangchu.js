@@ -2,11 +2,19 @@ var express = require('express');
 var router = express.Router();
 const sql = require('../../data/dbSinhvien/db_tbSinhvien');
 const XLSX = require('xlsx');
+var Sinhvien = require('../../models/Sinhvien');
 var path = require('path');
 
 router.get('/', function(req, res, next) {
+  const limit = 5; 
+  const page = 1;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit; 
   sql.getStudents().then(resutl => {
-    res.render('layouts/trangchu', { sinhvien: resutl[0] });
+    const PagingData = resutl[0];
+    const data = PagingData.slice(startIndex, endIndex);
+    const count = PagingData.length;
+    res.render('layouts/trangchu', { sinhvien: data, current: page, pages: Math.ceil(count/limit) });
   })
 });
 router.get('/deletestudent/:id', function(req, res, next) {
@@ -18,6 +26,19 @@ router.post('/', function(req, res, next) {
   let searchTerm = req.body.search;
   sql.SearchStudent(searchTerm).then(resutl => {
     res.render('layouts/trangchu', { sinhvien: resutl[0] });
+  })
+});
+
+router.get('/:page', (req, res, next) => {
+  const limit = 5; 
+  const page = req.params.page;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit; 
+  sql.getStudents().then(resutl => {
+    const PagingData = resutl[0];
+    const data = PagingData.slice(startIndex, endIndex);
+    const count = PagingData.length;
+    res.render('layouts/trangchu', { sinhvien: data, current: page, pages: Math.ceil(count/limit) });
   })
 });
 
@@ -48,7 +69,5 @@ router.post('/excel', function(req, res, next) {
       }
     });
 });
-
-
 
 module.exports = router;

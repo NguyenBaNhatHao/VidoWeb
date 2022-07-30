@@ -5,7 +5,7 @@ async function getStudents(){
 
     try {
         let pool = await sql.connect(config);
-        let student = await pool.request().query("SELECT * FROM tb_sinhvien");
+        let student = await pool.request().query("select * from tb_sinhvien");
         return student.recordsets
          
     } catch (error) {

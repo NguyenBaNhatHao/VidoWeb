@@ -1,3 +1,14 @@
+const SinhvienModels ={
+  sv_id: {type: String, require: true},
+  sv_name: {type: String, require: false},
+  sv_ngaysinh: {type: String, require: false},
+  sv_nganh: {type: String, require: false},
+  sv_hedaotao: {type: String, require: false},
+  sv_ketqua: {type: String, require: false},
+  sv_hinhthuc: {type: String, require: false},
+  sv_tinhtrang: {type: String, require: false},
+  sv_email: {type: String, require: false}
+};
 class Sinhvien{
     constructor(sv_id,sv_name,sv_ngaysinh,sv_nganh,sv_hedaotao,sv_ketqua,sv_hinhthuc,sv_tinhtrang,sv_email,img_name,img_time){
       this.sv_id = sv_id;
@@ -15,5 +26,6 @@ class Sinhvien{
   }
   
 module.exports = {
-    Sinhvien
+    Sinhvien,
+    SinhvienModels : SinhvienModels
 }

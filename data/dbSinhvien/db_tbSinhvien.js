@@ -1,6 +1,6 @@
 var config = require('../dbConfig');
 var sql = require('mssql');
-
+var sinhvienmodel = require('../../models/Sinhvien');
 async function getStudents(){
 
     try {
@@ -26,7 +26,8 @@ async function getStudentsId(studentId){
 }
 
 async function addStudent(Sinhvien){
-    
+    const model = sinhvienmodel.SinhvienModels;
+    console.log(model);
     try {
         let pool = await sql.connect(config);
         let student = await pool.request()
@@ -68,7 +69,7 @@ async function addStudentExcel(Sinhvien){
         let student = await pool.request()
         .input('sv_id',sql.NVarChar, Sinhvien.sv_id)
         .input('sv_name',sql.NVarChar, Sinhvien.sv_name)
-        .input('sv_ngaysinh',sql.NVarChar, Sinhvien.sv_ngaysinh)
+        .input('sv_ngaysinh',sql.NVarChar, Sinhvien.dd+'/'+Sinhvien.mm+'/'+Sinhvien.yyyy)
         .input('sv_nganh',sql.NVarChar, Sinhvien.sv_nganh)
         .input('sv_hedaotao',sql.NVarChar, Sinhvien.sv_hedaotao)
         .input('sv_ketqua',sql.NVarChar, Sinhvien.sv_ketqua)

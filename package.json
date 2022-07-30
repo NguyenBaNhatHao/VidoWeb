@@ -15,6 +15,7 @@
     "express": "~4.16.1",
     "express-ejs-layouts": "^2.5.1",
     "express-fileupload": "^1.4.0",
+    "fs": "^0.0.1-security",
     "helmet": "^5.1.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",

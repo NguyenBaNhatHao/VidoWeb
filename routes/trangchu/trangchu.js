@@ -60,12 +60,10 @@ router.post('/excel', function(req, res, next) {
       res.status(400).send('No file were uploaded!');
     }
     sampleFile = req.files.excel;
-    uploadFile = path.join(__dirname, '../../excel/'+sampleFile.name);
+    uploadFile = path.join(__dirname+'/excel/'+sampleFile.name);
     sampleFile.mv(uploadFile, function(err){
       if(!err){
-        const wb = XLSX.readFile(uploadFile,{
-          type: 'string',
-        });
+        const wb = XLSX.readFile(uploadFile);
         const ws = wb.Sheets[wb.SheetNames[0]];
         var xlData = XLSX.utils.sheet_to_json(ws);
         xlData.forEach(entry => {

@@ -66,12 +66,9 @@ router.post('/excel', function(req, res, next) {
         const wb = XLSX.readFile(uploadFile);
         const ws = wb.Sheets[wb.SheetNames[0]];
         var xlData = XLSX.utils.sheet_to_json(ws);
-        xlData.forEach(entry => {
-          sql.addStudentExcel(entry).then(resutl => {
-            
-          });
+        sql.addStudentExcel(xlData).then(resutl => {
+          res.send('đã add file excel thành công');
         });
-        res.redirect('/');
       }else{
         return res.status(400).send(err);
       }

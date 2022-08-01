@@ -66,21 +66,23 @@ async function SearchStudent(Sinhvien){
 async function addStudentExcel(Sinhvien){
     try {
         let pool = await sql.connect(config);
-        const model = Object.values(Sinhvien);
-        let student = await pool.request()
-        .input('sv_id',sql.NVarChar, model[0])
-        .input('sv_name',sql.NVarChar, model[1])
-        .input('sv_ngaysinh',sql.NVarChar, model[2]+'/'+model[3]+'/'+model[4])
-        .input('sv_hedaotao',sql.NVarChar, model[5])
-        .input('sv_nganh',sql.NVarChar, model[6])
-        .input('sv_hinhthuc',sql.NVarChar, model[7])
-        .input('sv_tinhtrang',sql.NVarChar, model[8])
-        .input('sv_ketqua',sql.NVarChar, model[9])
-        .input('sv_email',sql.VarChar, model[10])
-        .input('img_name',sql.NVarChar, Sinhvien.img_name)
-        .input('img_time',sql.NVarChar, Sinhvien.img_time)
-        .execute('InsertStudent');
-        return student.recordsets
+        Sinhvien.forEach(element => {
+            const model = Object.values(element); 
+            let student = pool.request()
+            .input('sv_id',sql.NVarChar, model[0])
+            .input('sv_name',sql.NVarChar, model[1])
+            .input('sv_ngaysinh',sql.NVarChar, model[2]+'/'+model[3]+'/'+model[4])
+            .input('sv_hedaotao',sql.NVarChar, model[5])
+            .input('sv_nganh',sql.NVarChar, model[6])
+            .input('sv_hinhthuc',sql.NVarChar, model[7])
+            .input('sv_tinhtrang',sql.NVarChar, model[8])
+            .input('sv_ketqua',sql.NVarChar, model[9])
+            .input('sv_email',sql.VarChar, model[10])
+            .input('img_name',sql.NVarChar, Sinhvien.img_name)
+            .input('img_time',sql.NVarChar, Sinhvien.img_time)
+            .execute('InsertStudent');
+            return student.recordsets;
+        });
     } catch (error) {
         console.log(error)
     } 
